@@ -23,7 +23,7 @@
                 <version>2.22.2</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${project.build.testOutputDirectory}</suiteXmlFile>
+                        <suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_1/addition-and-subtraction-suite.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
@@ -37,6 +37,15 @@
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
+
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.20.2</version>
+            <scope>test</scope>
+        </dependency>
+
 
         <dependency>
             <groupId>com.epam.tat.module4</groupId>
