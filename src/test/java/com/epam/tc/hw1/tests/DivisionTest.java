@@ -9,4 +9,9 @@ public class DivisionTest extends OperationTest {
     public void alwaysPassedDivisionTest() {
         assertThat(true);
     }
+
+    @Test(expectedExceptions = { NumberFormatException.class })
+    public void div_LongByZero_NumberFormatExceptionThrown() {
+        calculator.div(1L, 0L);
+    }
 }
