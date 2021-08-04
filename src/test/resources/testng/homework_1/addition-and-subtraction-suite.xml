@@ -3,26 +3,12 @@
 <suite name="additionAndSubtractionTests">
     <test name="additionTest" >
         <classes>
-            <class name="com.epam.tc.hw1.tests.AdditionTests" />
+            <class name="com.epam.tc.hw1.tests.AdditionTest" />
         </classes>
     </test>
     <test name="subtractionTest" >
         <classes>
-            <class name="com.epam.tc.hw1.tests.SubtractionTests" />
+            <class name="com.epam.tc.hw1.tests.SubtractionTest" />
         </classes>
     </test>
 </suite>
-
-<!--
-<groups>
-            <run>
-                <include name = "add_sub-tests"></include>
-            </run>
-        </groups>
-<packages>
-<package name="com.epam.tc.hw1" />
-</packages>
-        <classes>
-            <class name="AdditionTests"/>
-        </classes>
--->

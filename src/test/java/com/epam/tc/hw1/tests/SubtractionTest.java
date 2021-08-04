@@ -3,9 +3,9 @@ package com.epam.tc.hw1.tests;
 import org.testng.annotations.Test;
 import static org.assertj.core.api.Assertions.*;
 
-public class SubtractionTests {
+public class SubtractionTest extends OperationTest {
 
-    @Test(groups = {"add_sub-tests"})
+    @Test
     public void alwaysPassedSubtractionTest() {
         assertThat(true);
     }
