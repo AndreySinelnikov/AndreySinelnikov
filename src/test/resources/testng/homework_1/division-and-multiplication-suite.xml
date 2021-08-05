@@ -3,12 +3,12 @@
 <suite name="divisionAndMultiplication">
     <test name="divisionTest" >
         <classes>
-            <class name="com.epam.tc.hw1.tests.DivisionTest" />
+            <class name="com.epam.tc.hw1.DivisionTests" />
         </classes>
     </test>
     <test name="multiplicationTest" >
         <classes>
-            <class name="com.epam.tc.hw1.tests.MultiplicationTest" />
+            <class name="com.epam.tc.hw1.MultiplicationTests" />
         </classes>
     </test>
 </suite>

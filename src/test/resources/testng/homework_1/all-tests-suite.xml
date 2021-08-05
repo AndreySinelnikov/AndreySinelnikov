@@ -3,7 +3,7 @@
 <suite name="All-Tests">
     <test name="all-tests" >
         <packages>
-            <package name="com.epam.tc.hw1.tests" />
+            <package name="com.epam.tc.hw1" />
         </packages>
     </test>
 </suite>
