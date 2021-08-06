@@ -116,6 +116,13 @@
                 <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_1/all-tests-suite.xml</maven.surefire.plugin.suiteXmlFile>
             </properties>
         </profile>
+
+        <profile>
+            <id>hw2test_all-tests</id>
+            <properties>
+                <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_2/all-tests-suite.xml</maven.surefire.plugin.suiteXmlFile>
+            </properties>
+        </profile>
     </profiles>
 
 </project>

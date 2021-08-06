@@ -4,6 +4,7 @@
     <test name="exercise-1" >
         <packages>
             <package name="com.epam.tc.hw2.ex1" />
+            <package name="com.epam.tc.hw2.ex2" />
         </packages>
     </test>
 </suite>
