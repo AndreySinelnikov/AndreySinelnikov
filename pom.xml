@@ -16,6 +16,7 @@
         <assertj-core.version>3.20.2</assertj-core.version>
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
         <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_1/addition-and-subtraction-suite.xml</maven.surefire.plugin.suiteXmlFile>
+        <selenium-java.version>3.141.59</selenium-java.version>
     </properties>
 
     <build>
@@ -62,6 +63,13 @@
             <version>${maven-checkstyle-plugin.version}</version>
             <type>maven-plugin</type>
         </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
+        </dependency>
+
     </dependencies>
 
     <profiles>
