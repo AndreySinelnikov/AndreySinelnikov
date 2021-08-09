@@ -41,9 +41,14 @@ public class SubtractionTests extends OperationTests {
                 .isEqualTo(expectedResult);
     }
 
-    @Test
-    public void sub_positiveInfinityFromPositiveInfinity_NaN() {
-        assertThat(calculator.sub(POS_INFINITY, POS_INFINITY))
+    @DataProvider
+    public static Object[][] positiveInfinityFromPositiveInfinity_Data() {
+        return new Object[][] {{POS_INFINITY, POS_INFINITY}};
+    }
+
+    @Test(dataProvider = "positiveInfinityFromPositiveInfinity_Data")
+    public void sub_positiveInfinityFromPositiveInfinity_NaN(double a, double b) {
+        assertThat(calculator.sub(a, b))
                 .isNaN();
     }
 }

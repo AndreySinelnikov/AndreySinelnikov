@@ -42,20 +42,35 @@ public class DivisionTests extends OperationTests {
                 .isEqualTo(expectedResult);
     }
 
-    @Test(expectedExceptions = { NumberFormatException.class })
-    public void div_LongValueByZero_NumberFormatExceptionThrown() {
-        calculator.div(1L, 0L);
+    @DataProvider
+    public static Object[][] LongValueByZero_Data() {
+        return new Object[][] {{1L, 0L}};
     }
 
-    @Test
-    public void div_doubleZeroValueByDoubleZeroValue_NaN() {
-        assertThat(calculator.div(0.0, 0.0))
+    @Test(dataProvider = "LongValueByZero_Data", expectedExceptions = { NumberFormatException.class })
+    public void div_LongValueByZero_NumberFormatExceptionThrown(long a, long b) {
+        calculator.div(a, b);
+    }
+
+    @DataProvider
+    public static Object[][] doubleZeroValueByDoubleZeroValue_Data() {
+        return new Object[][] {{0.0, 0.0}};
+    }
+
+    @Test(dataProvider = "doubleZeroValueByDoubleZeroValue_Data")
+    public void div_doubleZeroValueByDoubleZeroValue_NaN(double a, double b) {
+        assertThat(calculator.div(a, b))
                 .isNaN();
     }
 
-    @Test
-    public void div_doubleNonZeroValueByDoubleZeroValue_PositiveInfinity() {
-        assertThat(calculator.div(1.0, 0.0))
+    @DataProvider
+    public static Object[][] doubleNonZeroValueByDoubleZeroValue_Data() {
+        return new Object[][] {{1.0, 0.0}};
+    }
+
+    @Test(dataProvider = "doubleNonZeroValueByDoubleZeroValue_Data")
+    public void div_doubleNonZeroValueByDoubleZeroValue_PositiveInfinity(double a, double b) {
+        assertThat(calculator.div(a, b))
                 .isEqualTo(POS_INFINITY);
     }
 }

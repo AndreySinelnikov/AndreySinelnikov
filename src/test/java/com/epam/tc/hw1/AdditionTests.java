@@ -41,9 +41,14 @@ public class AdditionTests extends OperationTests {
                 .isEqualTo(expectedResult);
     }
 
-    @Test
-    public void sum_positiveInfinityWithNegativeInfinity_NaN() {
-        assertThat(calculator.sum(POS_INFINITY, NEG_INFINITY))
+    @DataProvider
+    public static Object[][] positiveInfinityWithNegativeInfinity_Data() {
+        return new Object[][] {{POS_INFINITY, NEG_INFINITY}};
+    }
+
+    @Test(dataProvider = "positiveInfinityWithNegativeInfinity_Data")
+    public void sum_positiveInfinityWithNegativeInfinity_NaN(double a, double b) {
+        assertThat(calculator.sum(a, b))
                 .isNaN();
     }
 }
