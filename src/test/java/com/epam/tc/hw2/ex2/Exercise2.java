@@ -27,7 +27,7 @@ public class Exercise2 {
         // 3. Perform login
         List<WebElement> loginDropdowns = webdriver.findElements(By.className("navbar-right"));
         loginDropdowns.get(0).click();
-        webdriver.findElement(By.id("name")).sendKeys("Roman");
+        webdriver.findElement(By.id("name")).sendKeys("Roman");  // refactor to external source
         webdriver.findElement(By.id("password")).sendKeys("Jdi1234");
         webdriver.findElement(By.id("login-button")).click();
         // 4. Assert Username is loggined
@@ -38,20 +38,13 @@ public class Exercise2 {
         upperNavBar.findElement(By.className("dropdown-toggle")).click();
         upperNavBar.findElement(By.cssSelector("[href='different-elements.html']")).click();
         // 6. Select checkboxes - Water, Wind;
-        List<WebElement> checkboxes = webdriver.findElements(By.className("label-checkbox"));
-        for (WebElement checkbox: checkboxes) {
-            if (checkbox.getText().contains("Water") || checkbox.getText().contains("Wind")) {
-                checkbox.click();
-            }
-        }
+        webdriver.findElements(By.className("label-checkbox")).stream()
+                .filter(elem -> elem.getText().contains("Water") || elem.getText().contains("Wind"))
+                .forEach(WebElement::click);
         // 7. Select radio - Selen
-        List<WebElement> radios = webdriver.findElements(By.className("label-radio"));
-        for (WebElement radio: radios) {
-            if (radio.getText().contains("Selen")) {
-                radio.click();
-                break;
-            }
-        }
+        webdriver.findElements(By.className("label-radio")).stream()
+                .filter(elem -> elem.getText().contains("Selen"))
+                .forEach(WebElement::click);
         // 8. Select in dropdown - Yellow
         Select dropdown = new Select(webdriver.findElement(By.tagName("select")));
         dropdown.selectByVisibleText("Yellow");
