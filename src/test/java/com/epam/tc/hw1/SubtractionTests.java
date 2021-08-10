@@ -1,8 +1,10 @@
 package com.epam.tc.hw1;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import static org.assertj.core.api.Assertions.*;
+
 
 public class SubtractionTests extends OperationTests {
 

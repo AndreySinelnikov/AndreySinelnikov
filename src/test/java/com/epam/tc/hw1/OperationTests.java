@@ -4,8 +4,8 @@ import com.epam.tat.module4.Calculator;
 import org.testng.annotations.BeforeClass;
 
 public class OperationTests {
-    static protected final double POS_INFINITY = Double.POSITIVE_INFINITY;
-    static protected final double NEG_INFINITY = Double.NEGATIVE_INFINITY;
+    protected static final double POS_INFINITY = Double.POSITIVE_INFINITY;
+    protected static final double NEG_INFINITY = Double.NEGATIVE_INFINITY;
     protected Calculator calculator;
 
     @BeforeClass
