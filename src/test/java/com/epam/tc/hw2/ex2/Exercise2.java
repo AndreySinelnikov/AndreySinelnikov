@@ -1,12 +1,13 @@
 package com.epam.tc.hw2.ex2;
 
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,21 +19,23 @@ public class Exercise2 {
         System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\Selenium\\chromedriver.exe");
         WebDriver webdriver = new ChromeDriver();
         webdriver.manage().window().maximize();
-        SoftAssert softAssert = new SoftAssert();
+        SoftAssertions softly = new SoftAssertions();
 
         // 1. Open test site by URL
         webdriver.navigate().to("https://jdi-testing.github.io/jdi-light/index.html");
         // 2. Assert Browser title
-        softAssert.assertEquals("Home Page", webdriver.getTitle());
+        softly.assertThat(webdriver.getTitle())
+                .isEqualTo("Home Page");
         // 3. Perform login
         List<WebElement> loginDropdowns = webdriver.findElements(By.className("navbar-right"));
         loginDropdowns.get(0).click();
-        webdriver.findElement(By.id("name")).sendKeys("Roman");  // refactor to external source
+        webdriver.findElement(By.id("name")).sendKeys("Roman"); // refactor to external source
         webdriver.findElement(By.id("password")).sendKeys("Jdi1234");
         webdriver.findElement(By.id("login-button")).click();
         // 4. Assert Username is loggined
-        WebElement nameLabel = webdriver.findElement(By.xpath("//*[@id='user-name' and not(@class= 'hidden')]"));
-        softAssert.assertEquals(nameLabel.getText(), "ROMAN IOVLEV");
+        WebElement nameLabel = webdriver.findElement(By.xpath("//*[@id=\"user-name\" and not(@class=\"hidden\")]"));
+        softly.assertThat(nameLabel.getText())
+                .isEqualTo("ROMAN IOVLEV");
         // 5. Open through the header menu Service -> Different Elements Page
         WebElement upperNavBar = webdriver.findElements(By.className("m-l8")).get(0);
         upperNavBar.findElement(By.className("dropdown-toggle")).click();
@@ -54,12 +57,12 @@ public class Exercise2 {
                 .map(entry -> entry.substring(9))
                 .collect(Collectors.toList());
 
-        softAssert.assertTrue(logEntries.contains("Colors: value changed to Yellow"));
-        softAssert.assertTrue(logEntries.contains("metal: value changed to Selen"));
-        softAssert.assertTrue(logEntries.contains("Wind: condition changed to true"));
-        softAssert.assertTrue(logEntries.contains("Water: condition changed to true"));
+        softly.assertThat(logEntries.contains("Colors: value changed to Yellow")).isTrue();
+        softly.assertThat(logEntries.contains("metal: value changed to Selen")).isTrue();
+        softly.assertThat(logEntries.contains("Wind: condition changed to true")).isTrue();
+        softly.assertThat(logEntries.contains("Water: condition changed to true")).isTrue();
 
-        softAssert.assertAll();
+        softly.assertAll();
         // 10. Close browser
         webdriver.quit();
     }
