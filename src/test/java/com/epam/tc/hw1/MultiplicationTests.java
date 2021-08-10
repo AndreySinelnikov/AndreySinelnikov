@@ -21,16 +21,16 @@ public class MultiplicationTests extends OperationTests {
     }
 
     // double values: positive, negative, zero -- args and operation result within double value limits
-//    @DataProvider
-//    public static Object[][] simpleDoubleValues_Data() {
-//        return new Object[][] {{2.0, 2.0, 4.0}, {0.0, 0.0, 0.0}, {0.2, -0.3, Math.floor(-0.6)}};
-//    }
-//
-//    @Test(dataProvider = "simpleDoubleValues_Data")
-//    public void mult_simpleDoubleValues_Calculated(double a, double b, double expectedResult) {
-//        assertThat(calculator.mult(a, b))
-//                .isEqualTo(expectedResult);
-//    }
+    //    @DataProvider
+    //    public static Object[][] simpleDoubleValues_Data() {
+    //        return new Object[][] {{2.0, 2.0, 4.0}, {0.0, 0.0, 0.0}, {0.2, -0.3, Math.floor(-0.6)}};
+    //    }
+    //
+    //    @Test(dataProvider = "simpleDoubleValues_Data")
+    //    public void mult_simpleDoubleValues_Calculated(double a, double b, double expectedResult) {
+    //        assertThat(calculator.mult(a, b))
+    //                .isEqualTo(expectedResult);
+    //    }
 
     @DataProvider
     public static Object[][] doubleValuesIncludeInfinity_Data() {
