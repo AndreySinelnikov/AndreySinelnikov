@@ -6,6 +6,7 @@ import static com.epam.tc.hw2.ex1.Exercise1TestData.EXPECTED_TEXTS_UNDER_IMAGES;
 import static com.epam.tc.hw2.ex1.Exercise1TestData.LEFT_SECTION_EXPECTED_TEXTS;
 import static com.epam.tc.hw2.ex1.Exercise1TestData.TEST_USER_DATA;
 import static com.epam.tc.hw2.ex1.Exercise1TestData.UPPER_NAV_BAR_EXPECTED_TEXTS;
+import static com.epam.tc.hw2.ex1.Exercise1TestData.URL_DATA;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,13 +27,12 @@ public class Exercise1 {
         SoftAssertions softly = new SoftAssertions();
 
         // 1. Open test site by URL
-        webdriver.navigate().to("https://jdi-testing.github.io/jdi-light/index.html");
+        webdriver.navigate().to(URL_DATA.get("URL"));
         // 2. Assert Browser title
         softly.assertThat(webdriver.getTitle())
-                .isEqualTo("Home Page");
+                .isEqualTo(URL_DATA.get("DISPLAYED_TITLE"));
         // 3. Perform login
-        List<WebElement> loginDropdowns = webdriver.findElements(By.className("navbar-right"));
-        loginDropdowns.get(0).click();
+        webdriver.findElement(By.className("navbar-right")).click();
         webdriver.findElement(By.id("name")).sendKeys(TEST_USER_DATA.get("LOGIN"));
         webdriver.findElement(By.id("password")).sendKeys(TEST_USER_DATA.get("PASSWORD"));
         webdriver.findElement(By.id("login-button")).click();
@@ -41,14 +41,14 @@ public class Exercise1 {
         softly.assertThat(nameLabel.getText())
                 .isEqualTo(TEST_USER_DATA.get("DISPLAYED_NAME"));
         // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
-        WebElement upperNavBar = webdriver.findElements(By.className("m-l8")).get(0);
+        WebElement upperNavBar = webdriver.findElement(By.className("m-l8"));
         softly.assertThat(getDirectChildren(upperNavBar))
                 .hasSize(4)
                 .allMatch(WebElement::isDisplayed);
         softly.assertThat(getListOfDirectChildrenTexts(upperNavBar))
                 .isEqualTo(UPPER_NAV_BAR_EXPECTED_TEXTS);
         // 6. Assert that there are 4 images on the Index Page and they are displayed
-        WebElement imageRow = webdriver.findElements(By.cssSelector(".row.clerafix.benefits")).get(0);
+        WebElement imageRow = webdriver.findElement(By.cssSelector(".row.clerafix.benefits"));
         List<WebElement> images = imageRow.findElements(By.className("benefit-icon"));
         softly.assertThat(images)
                 .hasSize(4)
@@ -72,7 +72,7 @@ public class Exercise1 {
         // 10. Switch to original window back
         webdriver.switchTo().parentFrame();
         // 11. Assert that there are 5 items in the Left Section are displayed and they have proper text
-        WebElement leftSection = webdriver.findElements(By.cssSelector(".sidebar-menu.left")).get(0);
+        WebElement leftSection = webdriver.findElement(By.cssSelector(".sidebar-menu.left"));
         softly.assertThat(getDirectChildren(leftSection))
                 .hasSize(5)
                 .allMatch(WebElement::isDisplayed);
@@ -81,6 +81,6 @@ public class Exercise1 {
 
         softly.assertAll();
         // 12. Close Browser
-        //webdriver.quit();
+        webdriver.quit();
     }
 }
