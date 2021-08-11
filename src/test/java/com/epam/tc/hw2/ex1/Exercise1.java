@@ -4,9 +4,9 @@ import static com.epam.tc.hw2.Utils.getDirectChildren;
 import static com.epam.tc.hw2.Utils.getListOfDirectChildrenTexts;
 import static com.epam.tc.hw2.ex1.Exercise1TestData.EXPECTED_TEXTS_UNDER_IMAGES;
 import static com.epam.tc.hw2.ex1.Exercise1TestData.LEFT_SECTION_EXPECTED_TEXTS;
-import static com.epam.tc.hw2.ex1.Exercise1TestData.TEST_USER_DATA;
+import static com.epam.tc.hw2.CommonTestData.TEST_USER_DATA;
 import static com.epam.tc.hw2.ex1.Exercise1TestData.UPPER_NAV_BAR_EXPECTED_TEXTS;
-import static com.epam.tc.hw2.ex1.Exercise1TestData.URL_DATA;
+import static com.epam.tc.hw2.CommonTestData.URL_DATA;
 
 import java.util.List;
 import java.util.stream.Collectors;

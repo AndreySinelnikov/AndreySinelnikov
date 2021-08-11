@@ -18,6 +18,7 @@
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
         <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_1/addition-and-subtraction-suite.xml</maven.surefire.plugin.suiteXmlFile>
         <checkstyle.version>8.42</checkstyle.version>
+        <selenium-java.version>3.141.59</selenium-java.version>
     </properties>
 
     <build>
@@ -94,9 +95,8 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
+            <version>${selenium-java.version}</version>
         </dependency>
-
     </dependencies>
 
     <profiles>
@@ -121,6 +121,13 @@
             <id>hw1test_all-tests</id>
             <properties>
                 <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_1/all-tests-suite.xml</maven.surefire.plugin.suiteXmlFile>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>hw2test_all-tests</id>
+            <properties>
+                <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_2/all-tests-suite.xml</maven.surefire.plugin.suiteXmlFile>
             </properties>
         </profile>
     </profiles>

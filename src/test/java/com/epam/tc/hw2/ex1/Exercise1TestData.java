@@ -18,15 +18,4 @@ class Exercise1TestData {
     static final List<String> LEFT_SECTION_EXPECTED_TEXTS = List.of("Home", "Contact form",
                                                                           "Service", "Metals & Colors",
                                                                           "Elements packs");
-
-    static final Map<String, String> TEST_USER_DATA = Map.of(
-            "LOGIN", "Roman",
-            "PASSWORD", "Jdi1234",
-            "DISPLAYED_NAME", "ROMAN IOVLEV"
-            );
-
-    static final Map<String, String> URL_DATA = Map.of(
-        "URL", "https://jdi-testing.github.io/jdi-light/index.html",
-        "DISPLAYED_TITLE", "Home Page"
-    );
 }

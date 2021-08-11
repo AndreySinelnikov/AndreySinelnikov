@@ -1,9 +1,10 @@
 package com.epam.tc.hw2.ex2;
 
 
+
+import static com.epam.tc.hw2.CommonTestData.TEST_USER_DATA;
+import static com.epam.tc.hw2.CommonTestData.URL_DATA;
 import static com.epam.tc.hw2.ex2.Exercise2TestData.EXPECTED_LOG_ENTRIES;
-import static com.epam.tc.hw2.ex2.Exercise2TestData.TEST_USER_DATA;
-import static com.epam.tc.hw2.ex2.Exercise2TestData.URL_DATA;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -60,7 +61,7 @@ public class Exercise2 {
                                            .map(entry -> entry.substring(9))
                                            .collect(Collectors.toList());
 
-        softly.assertThat(logEntries.containsAll(EXPECTED_LOG_ENTRIES));
+        softly.assertThat(logEntries.containsAll(EXPECTED_LOG_ENTRIES)).isTrue();
 
         softly.assertAll();
         // 10. Close browser
