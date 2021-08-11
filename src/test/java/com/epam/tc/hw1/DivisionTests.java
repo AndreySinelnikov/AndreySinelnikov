@@ -10,54 +10,69 @@ public class DivisionTests extends OperationTests {
 
     // long values: positive, negative -- args and operation result within long value limits, no truncation
     @DataProvider
-    public static Object[][] simpleLongValues_Data() {
+    public static Object[][] simpleLongValuesData() {
         return new Object[][] {{4L, 2L, 2L}, {18L, -3L, -6L}, {-10L, -5L, 2L}};
     }
 
-    @Test(dataProvider = "simpleLongValues_Data")
-    public void div_simpleLongValues_Calculated(long a, long b, long expectedResult) {
+    @Test(dataProvider = "simpleLongValuesData")
+    public void divSimpleLongValuesCalculated(long a, long b, long expectedResult) {
         assertThat(calculator.div(a, b))
                 .isEqualTo(expectedResult);
     }
 
     // long values: positive, negative -- args and operation result within long value limits, result truncated
     @DataProvider
-    public static Object[][] longValuesProducingTruncatedResult_Data() {
+    public static Object[][] longValuesProducingTruncatedResultData() {
         return new Object[][] {{3L, 6L, 0L}, {10L, 3L, 3L}, {-5L, 2L, -2L}};
     }
 
-    @Test(dataProvider = "longValuesProducingTruncatedResult_Data")
-    public void div_longValuesProducingTruncatedResult_Calculated(long a, long b, long expectedResult) {
+    @Test(dataProvider = "longValuesProducingTruncatedResultData")
+    public void divLongValuesProducingTruncatedResultCalculated(long a, long b, long expectedResult) {
         assertThat(calculator.div(a, b))
                 .isEqualTo(expectedResult);
     }
 
     // double values: positive, negative -- args and operation result within double value limits
     @DataProvider
-    public static Object[][] simpleDoubleValues_Data() {
+    public static Object[][] simpleDoubleValuesData() {
         return new Object[][] {{9.0, 3.0, 3.0}, {-5.0, 2.0, -2.5}, {1.0, 3.0, 0.3333333333333333}};
     }
 
-    @Test(dataProvider = "simpleDoubleValues_Data")
-    public void div_simpleDoubleValues_Calculated(double a, double b, double expectedResult) {
+    @Test(dataProvider = "simpleDoubleValuesData")
+    public void divSimpleDoubleValuesCalculated(double a, double b, double expectedResult) {
         assertThat(calculator.div(a, b))
                 .isEqualTo(expectedResult);
     }
 
-    @Test(expectedExceptions = { NumberFormatException.class })
-    public void div_LongValueByZero_NumberFormatExceptionThrown() {
-        calculator.div(1L, 0L);
+    @DataProvider
+    public static Object[][] longValueByZeroData() {
+        return new Object[][] {{1L, 0L}};
     }
 
-    @Test
-    public void div_doubleZeroValueByDoubleZeroValue_NaN() {
-        assertThat(calculator.div(0.0, 0.0))
+    @Test(dataProvider = "longValueByZeroData", expectedExceptions = { NumberFormatException.class })
+    public void divLongValueByZeroThrowsNumberFormatException(long a, long b) {
+        calculator.div(a, b);
+    }
+
+    @DataProvider
+    public static Object[][] doubleZeroValueByDoubleZeroValueData() {
+        return new Object[][] {{0.0, 0.0}};
+    }
+
+    @Test(dataProvider = "doubleZeroValueByDoubleZeroValueData")
+    public void divDoubleZeroValueByDoubleZeroValueReturnsNaN(double a, double b) {
+        assertThat(calculator.div(a, b))
                 .isNaN();
     }
 
-    @Test
-    public void div_doubleNonZeroValueByDoubleZeroValue_PositiveInfinity() {
-        assertThat(calculator.div(1.0, 0.0))
+    @DataProvider
+    public static Object[][] doubleNonZeroValueByDoubleZeroValueData() {
+        return new Object[][] {{1.0, 0.0}};
+    }
+
+    @Test(dataProvider = "doubleNonZeroValueByDoubleZeroValueData")
+    public void divDoubleNonZeroValueByDoubleZeroValueReturnsPositiveInfinity(double a, double b) {
+        assertThat(calculator.div(a, b))
                 .isEqualTo(POS_INFINITY);
     }
 }
