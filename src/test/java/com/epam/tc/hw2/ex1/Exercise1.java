@@ -8,6 +8,7 @@ import static com.epam.tc.hw2.CommonTestData.TEST_USER_DATA;
 import static com.epam.tc.hw2.ex1.Exercise1TestData.UPPER_NAV_BAR_EXPECTED_TEXTS;
 import static com.epam.tc.hw2.CommonTestData.URL_DATA;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.assertj.core.api.SoftAssertions;
@@ -15,15 +16,27 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class Exercise1 {
+    private WebDriver webdriver;
+
+    @BeforeMethod
+    public void setupMethod() {
+        WebDriverManager.chromedriver().setup();
+        webdriver = new ChromeDriver();
+        webdriver.manage().window().maximize();
+    }
+
+    @AfterMethod
+    public void teardownMethod() {
+        webdriver.quit();
+    }
 
     @Test
     public void exercise1() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\Selenium\\chromedriver.exe");
-        WebDriver webdriver = new ChromeDriver();
-        webdriver.manage().window().maximize();
         SoftAssertions softly = new SoftAssertions();
 
         // 1. Open test site by URL
@@ -81,6 +94,5 @@ public class Exercise1 {
 
         softly.assertAll();
         // 12. Close Browser
-        webdriver.quit();
     }
 }
