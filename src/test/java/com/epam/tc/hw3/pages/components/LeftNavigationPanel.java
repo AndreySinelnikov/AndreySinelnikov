@@ -1,4 +1,4 @@
 package com.epam.tc.hw3.pages.components;
 
-public class LeftNavigationPanel {
+public class LeftNavigationPanel extends AbstractComponent {
 }

@@ -1,40 +1,28 @@
 package com.epam.tc.hw3.pages;
 
-import com.epam.tc.hw3.pages.components.LeftNavigationPanel;
-import com.epam.tc.hw3.pages.components.SearchAndLoginComponent;
-import com.epam.tc.hw3.pages.components.UpperNavigationBar;
-import java.util.List;
-import java.util.stream.Collectors;
-import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.Test;
 
-public class HomePage {
-    private UpperNavigationBar upperNavigationBar;
-    private LeftNavigationPanel leftNavigationPanel;
-    private SearchAndLoginComponent searchAndLoginComponent;
+public class HomePage extends AbstractPage {
 
+
+    static final String url = "https://jdi-testing.github.io/jdi-light/index.html"; // move to outer
 
 
     public HomePage(WebDriver webdriver) {
-        PageFactory.initElements(webdriver, this);
-        upperNavigationBar = new UpperNavigationBar();
-        leftNavigationPanel = new LeftNavigationPanel();
-        searchAndLoginComponent = new SearchAndLoginComponent();
+        super(webdriver, url);
     }
 
-    public UpperNavigationBar getUpperNavigationBar() {
-        return upperNavigationBar;
-    }
-
-    public LeftNavigationPanel getLeftNavigationPanel() {
-        return leftNavigationPanel;
-    }
-
-    public SearchAndLoginComponent getSearchAndLoginComponent() {
-        return searchAndLoginComponent;
-    }
+//    public UpperNavigationBar getUpperNavigationBar() {
+//        return upperNavigationBar;
+//    }
+//
+//    public LeftNavigationPanel getLeftNavigationPanel() {
+//        return leftNavigationPanel;
+//    }
+//
+//    public SearchAndLoginComponent getSearchAndLoginComponent() {
+//        return searchAndLoginComponent;
+//    }
 
 }
 
