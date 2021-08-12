@@ -1,39 +1,22 @@
 package com.epam.tc.hw2.ex1;
 
+import static com.epam.tc.hw2.CommonTestData.TEST_USER_DATA;
+import static com.epam.tc.hw2.CommonTestData.URL_DATA;
 import static com.epam.tc.hw2.Utils.getDirectChildren;
 import static com.epam.tc.hw2.Utils.getListOfDirectChildrenTexts;
 import static com.epam.tc.hw2.ex1.Exercise1TestData.EXPECTED_TEXTS_UNDER_IMAGES;
 import static com.epam.tc.hw2.ex1.Exercise1TestData.LEFT_SECTION_EXPECTED_TEXTS;
-import static com.epam.tc.hw2.CommonTestData.TEST_USER_DATA;
 import static com.epam.tc.hw2.ex1.Exercise1TestData.UPPER_NAV_BAR_EXPECTED_TEXTS;
-import static com.epam.tc.hw2.CommonTestData.URL_DATA;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.epam.tc.hw2.Exercise;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class Exercise1 {
-    private WebDriver webdriver;
-
-    @BeforeMethod
-    public void setupMethod() {
-        WebDriverManager.chromedriver().setup();
-        webdriver = new ChromeDriver();
-        webdriver.manage().window().maximize();
-    }
-
-    @AfterMethod
-    public void teardownMethod() {
-        webdriver.quit();
-    }
+public class Exercise1 extends Exercise {
 
     @Test
     public void exercise1() {
