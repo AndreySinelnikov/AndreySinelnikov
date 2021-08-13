@@ -10,5 +10,7 @@ public class Exercise1 extends AbstractExercise {
     public void exercise1() {
         HomePage home = new HomePage(webdriver);
         home.open();
+        home.upperNavigationPanel.login("Roman", "Jdi1234");
+
     }
 }
