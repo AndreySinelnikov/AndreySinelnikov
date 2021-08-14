@@ -4,11 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage extends AbstractPage {
 
-
-    static final String url = "https://jdi-testing.github.io/jdi-light/index.html"; // move to outer
-
-
-    public HomePage(WebDriver webdriver) {
+    public HomePage(WebDriver webdriver, String url) {
         super(webdriver, url);
     }
 
