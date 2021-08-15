@@ -1,15 +1,17 @@
 package com.epam.tc.hw3.pages;
 
-import com.epam.tc.hw3.pages.components.LogDisplayComponent;
+import com.epam.tc.hw3.components.LogDisplayComponent;
 import org.openqa.selenium.WebDriver;
 
-public class DifferentElementsPage extends AbstractPage {
-    public LogDisplayComponent logDisplayComponent;
+public class DifferentElementsPage extends BasePage {
+    private LogDisplayComponent logDisplayComponent;
 
-    static String url = "https://jdi-testing.github.io/jdi-light/different-elements.html"; // ref to outer
-
-    public DifferentElementsPage(WebDriver webdriver) {
+    public DifferentElementsPage(WebDriver webdriver, String url) {
         super(webdriver, url);
         logDisplayComponent = new LogDisplayComponent();
+    }
+
+    public LogDisplayComponent getLogDisplayComponent() {
+        return logDisplayComponent;
     }
 }

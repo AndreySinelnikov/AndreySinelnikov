@@ -1,4 +1,4 @@
-package com.epam.tc.hw3.pages.components;
+package com.epam.tc.hw3.components;
 
 public class LogDisplayComponent extends AbstractComponent {
 }

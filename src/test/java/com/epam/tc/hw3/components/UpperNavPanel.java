@@ -1,13 +1,14 @@
-package com.epam.tc.hw3.pages.components;
+package com.epam.tc.hw3.components;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class UpperNavigationPanel extends AbstractComponent {
+public class UpperNavPanel extends AbstractComponent {
     @FindBy(id = "name")
     private WebElement nameInput;
 
@@ -23,7 +24,8 @@ public class UpperNavigationPanel extends AbstractComponent {
     @FindBy(id = "user-name")
     private WebElement usernameLabel;
 
-    public UpperNavigationPanel(WebDriver webdriver) {
+
+    public UpperNavPanel(WebDriver webdriver) {
         this.webdriver = webdriver;
         PageFactory.initElements(webdriver, this);
     }
@@ -37,5 +39,15 @@ public class UpperNavigationPanel extends AbstractComponent {
 
     public String getLoggedUserName() {
         return usernameLabel.getText();
+    }
+
+    public List<WebElement> getNavElements() {
+        return webdriver.findElements(By.cssSelector(".m-l8 li"));
+    }
+
+    public List<String> getTextsOfNavElements() {
+        return getNavElements().stream()
+                               .map(WebElement::getText)
+                               .collect(Collectors.toList());
     }
 }
