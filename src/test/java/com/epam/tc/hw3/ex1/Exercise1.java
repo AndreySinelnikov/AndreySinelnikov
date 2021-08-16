@@ -5,6 +5,7 @@ import com.epam.tc.hw3.AbstractExercise;
 import com.epam.tc.hw3.pages.HomePage;
 import java.util.Arrays;
 import java.util.List;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -42,35 +43,26 @@ public class Exercise1 extends AbstractExercise {
                       .hasSize(4)
                       .isEqualTo(expectedImageCaptions);
         // 8. Assert that there is the iframe with “Frame Button” exist
-        // TODO check if iframe switching rigmarole can be implemented with Fluent Page Objects
+        softly.assertThat(home.getIframesWithFrameButton())
+              .isNotEmpty();
+        // 9. Switch to the iframe and check that there is “Frame Button” in the iframe
+        webdriver.switchTo().frame(home.getIframesWithFrameButton().get(0));
+        List<WebElement> frameButtons = webdriver.findElements(By.id("frame-button"));
+        softly.assertThat(frameButtons)
+              .isNotEmpty();
+        // 10. Switch to original window back
+        webdriver.switchTo().parentFrame();
+        // 11. Assert that there are 5 items in the Left Section are displayed and they have proper text
+        softly.assertThat((home.getLeftNavPanel().getNavElements()))
+              .hasSize(5)
+              .allMatch(WebElement::isDisplayed);
 
-
-
-        //        // 8. Assert that there is the iframe with “Frame Button” exist
-        //        List<WebElement> iframes = webdriver
-        //            .findElements(By.cssSelector("[src='https://jdi-testing.github.io/jdi-light/frame-button.html']"));
-        //        softly.assertThat(iframes.isEmpty())
-        //              .isFalse();
-        //        // 9. Switch to the iframe and check that there is “Frame Button” in the iframe
-        //        webdriver.switchTo().frame(iframes.get(0));
-        //        softly.assertThat(webdriver.findElements(By.id("frame-button")).isEmpty())
-        //              .isFalse();
-        //        // 10. Switch to original window back
-        //        webdriver.switchTo().parentFrame();
-        //        // 11. Assert that there are 5 items in the Left Section are displayed and they have proper text
-        //        WebElement leftSection = webdriver.findElement(By.cssSelector(".sidebar-menu.left"));
-        //        softly.assertThat(getDirectChildren(leftSection))
-        //              .hasSize(5)
-        //              .allMatch(WebElement::isDisplayed);
-        //        softly.assertThat(getListOfDirectChildrenTexts(leftSection))
-        //              .isEqualTo(LEFT_SECTION_EXPECTED_TEXTS);
-        //
-        //        softly.assertAll();
-        //        // 12. Close Browser
-
-
+        List<String> expectedLeftNames = Arrays.asList(props.getProperty("ex1_left_items").split(";"));
+        softly.assertThat(home.getUpperNavPanel().getTextsOfNavElements())
+              .isEqualTo(expectedUpperNames);
 
         softly.assertAll();
-
+        // 12. Close Browser
+        // handled by @AfterMethod
     }
 }

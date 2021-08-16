@@ -8,14 +8,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class UpperNavPanel extends BaseComponent {
+    @FindBy(className = "m-l8")
+    private WebElement navElementContainer;
 
     public UpperNavPanel(WebDriver webdriver) {
         super(webdriver);
     }
 
     public List<WebElement> getNavElements() {
-        // locator gets only the direct children of navbar container
-        return webdriver.findElements(By.cssSelector(".m-l8 > li"));
+        return navElementContainer.findElements(By.xpath("./*"));
     }
 
     public List<String> getTextsOfNavElements() {

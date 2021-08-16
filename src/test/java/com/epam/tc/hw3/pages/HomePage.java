@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends BasePage {
     @FindBy(id = "name")
@@ -27,8 +26,8 @@ public class HomePage extends BasePage {
     @FindBy(css = ".row.clerafix.benefits")
     private WebElement imageRow;
 
-    @FindBy(id = "frame")
-    private List<WebElement> iframes;
+    @FindBy(css = "[src='https://jdi-testing.github.io/jdi-light/frame-button.html']")
+    private List<WebElement> iframesWithFrameButton;
 
     public HomePage(WebDriver webdriver, String url) {
         super(webdriver, url);
@@ -55,6 +54,7 @@ public class HomePage extends BasePage {
                        .collect(Collectors.toList());
     }
 
-
-
+    public List<WebElement> getIframesWithFrameButton() {
+        return iframesWithFrameButton;
+    }
 }
