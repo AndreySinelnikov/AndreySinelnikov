@@ -1,5 +1,7 @@
 package com.epam.tc.hw3.components;
 
+import static com.epam.tc.hw3.Utils.getDirectChildren;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import org.openqa.selenium.By;
@@ -16,7 +18,7 @@ public class LeftNavPanel extends BaseComponent {
     }
 
     public List<WebElement> getNavElements() {
-        return navElementContainer.findElements(By.xpath("./*"));
+        return getDirectChildren(navElementContainer);
     }
 
     public List<String> getTextsOfNavElements() {

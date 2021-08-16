@@ -1,6 +1,8 @@
 package com.epam.tc.hw3.ex1;
 
 
+import static com.epam.tc.hw3.Utils.getTextsOfElements;
+
 import com.epam.tc.hw3.AbstractExercise;
 import com.epam.tc.hw3.pages.HomePage;
 import java.util.Arrays;
@@ -13,7 +15,7 @@ public class Exercise1 extends AbstractExercise {
 
     @Test
     public void exercise1() {
-        HomePage home = new HomePage(webdriver, props.getProperty("homepage"));  // TODO props into map
+        HomePage home = new HomePage(webdriver, props.getProperty("homepage"));
         // 1. Open test site by URL
         home.load();
         // 2. Assert Browser title
@@ -31,17 +33,18 @@ public class Exercise1 extends AbstractExercise {
               .allMatch(WebElement::isDisplayed);
 
         List<String> expectedUpperNames = Arrays.asList(props.getProperty("ex1_upper_items").split(";"));
-        softly.assertThat(home.getUpperNavPanel().getTextsOfNavElements())
+        softly.assertThat(getTextsOfElements(home.getUpperNavPanel().getNavElements()))
               .isEqualTo(expectedUpperNames);
         // 6. Assert that there are 4 images on the Index Page and they are displayed
-        softly.assertThat(home.getImageList())
+        softly.assertThat(home.getImages())
               .hasSize(4)
               .allMatch(WebElement::isDisplayed);
         // 7. Assert that there are 4 texts on the Index Page under icons and they have proper text
-        List<String> expectedImageCaptions = Arrays.asList(props.getProperty("captions").split(";"));
-        softly.assertThat(home.getImageCaptionsList())
-                      .hasSize(4)
-                      .isEqualTo(expectedImageCaptions);
+        List<String> expectedImageCaptionTexts = Arrays.asList(props.getProperty("captions").split(";"));
+        softly.assertThat(home.getImageCaptions())
+              .hasSize(4);
+        softly.assertThat(getTextsOfElements(home.getImageCaptions()))
+              .isEqualTo(expectedImageCaptionTexts);
         // 8. Assert that there is the iframe with “Frame Button” exist
         softly.assertThat(home.getIframesWithFrameButton())
               .isNotEmpty();
@@ -58,8 +61,8 @@ public class Exercise1 extends AbstractExercise {
               .allMatch(WebElement::isDisplayed);
 
         List<String> expectedLeftNames = Arrays.asList(props.getProperty("ex1_left_items").split(";"));
-        softly.assertThat(home.getUpperNavPanel().getTextsOfNavElements())
-              .isEqualTo(expectedUpperNames);
+        softly.assertThat(getTextsOfElements(home.getLeftNavPanel().getNavElements()))
+              .isEqualTo(expectedLeftNames);
 
         softly.assertAll();
         // 12. Close Browser

@@ -44,14 +44,12 @@ public class HomePage extends BasePage {
         return usernameLabel.getText();
     }
 
-    public List<WebElement> getImageList() {
+    public List<WebElement> getImages() {
         return imageRow.findElements(By.className("benefit-icon"));
     }
 
-    public List<String> getImageCaptionsList() {
-        return imageRow.findElements(By.className("benefit-txt")).stream()
-                       .map(elem -> elem.getAttribute("innerText"))
-                       .collect(Collectors.toList());
+    public List<WebElement> getImageCaptions() {
+        return imageRow.findElements(By.className("benefit-txt"));
     }
 
     public List<WebElement> getIframesWithFrameButton() {

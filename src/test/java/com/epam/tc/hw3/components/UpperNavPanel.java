@@ -1,5 +1,6 @@
 package com.epam.tc.hw3.components;
 
+import com.epam.tc.hw3.pages.DifferentElementsPage;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.openqa.selenium.By;
@@ -23,5 +24,15 @@ public class UpperNavPanel extends BaseComponent {
         return getNavElements().stream()
                                .map(WebElement::getText)
                                .collect(Collectors.toList());
+    }
+
+//    public DifferentElementsPage openElementsPage() {
+//        selectNavElement("Service");
+//    }
+
+    public void selectNavElement(String name) {
+        getNavElements().stream()
+                        .filter(elem -> elem.getText().trim().equals(name))
+                        .forEach(WebElement::click);
     }
 }
