@@ -16,4 +16,10 @@ public class Utils {
             .map(WebElement::getText)
             .collect(Collectors.toList());
     }
+
+    public static void clickItem(List<WebElement> elems, String name) {
+        elems.stream()
+            .filter(elem -> elem.getText().trim().equals(name))
+            .forEach(WebElement::click);
+    }
 }

@@ -1,11 +1,14 @@
 package com.epam.tc.hw3.pages;
 
+import static com.epam.tc.hw3.Utils.clickItem;
+
 import java.util.List;
-import java.util.stream.Collectors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage extends BasePage {
     @FindBy(id = "name")
@@ -54,5 +57,15 @@ public class HomePage extends BasePage {
 
     public List<WebElement> getIframesWithFrameButton() {
         return iframesWithFrameButton;
+    }
+
+    public DifferentElementsPage openDifferentElementsPage(String url) {
+        clickItem(getUpperNavPanel().getNavElements(), "SERVICE");
+        webdriver.findElement(By.cssSelector("[href='different-elements.html']")).click();
+
+        WebDriverWait wait = new WebDriverWait(webdriver, 5);
+        wait.until(ExpectedConditions.urlMatches("https://jdi-testing.github.io/jdi-light/different-elements.html"));
+
+        return new DifferentElementsPage(webdriver, url);
     }
 }

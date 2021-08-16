@@ -22,7 +22,6 @@ public class Exercise1 extends AbstractExercise {
         softly.assertThat(webdriver.getTitle())
               .isEqualTo(props.getProperty("displayed_title"));
         // 3. Perform login
-        //home.getUpperNavPanel().login(props.getProperty("username"), props.getProperty("password"));
         home.login(props.getProperty("username"), props.getProperty("password"));
         // 4. Assert Username is loggined
         softly.assertThat(home.getLoggedUserName())
@@ -40,7 +39,7 @@ public class Exercise1 extends AbstractExercise {
               .hasSize(4)
               .allMatch(WebElement::isDisplayed);
         // 7. Assert that there are 4 texts on the Index Page under icons and they have proper text
-        List<String> expectedImageCaptionTexts = Arrays.asList(props.getProperty("captions").split(";"));
+        List<String> expectedImageCaptionTexts = Arrays.asList(props.getProperty("caption_texts").split(";"));
         softly.assertThat(home.getImageCaptions())
               .hasSize(4);
         softly.assertThat(getTextsOfElements(home.getImageCaptions()))

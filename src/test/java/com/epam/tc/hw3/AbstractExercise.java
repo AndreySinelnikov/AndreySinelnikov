@@ -8,6 +8,7 @@ import java.util.Properties;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public abstract class AbstractExercise {
@@ -23,7 +24,7 @@ public abstract class AbstractExercise {
         softly = new SoftAssertions();
         props = new Properties();
 
-        // property reading from file has to be wrapped in a try-catch block to work
+        // property reading from file has to be wrapped in a try-catch IOE block to work
         try {
             FileInputStream inputStream = new FileInputStream("config.properties");
             props.load(inputStream);
@@ -33,8 +34,8 @@ public abstract class AbstractExercise {
         }
     }
 
-//    @AfterMethod TODO uncomment method
-//    public void teardownMethod() {
-//        webdriver.quit();
-//    }
+    @AfterMethod
+    public void teardownMethod() {
+        webdriver.quit();
+    }
 }
