@@ -6,43 +6,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class UpperNavPanel extends AbstractComponent {
-    @FindBy(id = "name")
-    private WebElement nameInput;
-
-    @FindBy(id = "password")
-    private WebElement passwordInput;
-
-    @FindBy(id = "login-button")
-    private WebElement loginButton;
-
-    @FindBy(className = "navbar-right")
-    private WebElement loginDropdown;
-
-    @FindBy(id = "user-name")
-    private WebElement usernameLabel;
-
+public class UpperNavPanel extends BaseComponent {
 
     public UpperNavPanel(WebDriver webdriver) {
-        this.webdriver = webdriver;
-        PageFactory.initElements(webdriver, this);
-    }
-
-    public void login(String username, String password) {
-        loginDropdown.click();
-        nameInput.sendKeys(username);
-        passwordInput.sendKeys(password);
-        loginButton.click();
-    }
-
-    public String getLoggedUserName() {
-        return usernameLabel.getText();
+        super(webdriver);
     }
 
     public List<WebElement> getNavElements() {
-        return webdriver.findElements(By.cssSelector(".m-l8 li"));
+        // locator gets only the direct children of navbar container
+        return webdriver.findElements(By.cssSelector(".m-l8 > li"));
     }
 
     public List<String> getTextsOfNavElements() {

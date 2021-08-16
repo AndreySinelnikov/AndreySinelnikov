@@ -12,51 +12,40 @@ public class Exercise1 extends AbstractExercise {
 
     @Test
     public void exercise1() {
-        HomePage home = new HomePage(webdriver, properties.getProperty("homepage"));
+        HomePage home = new HomePage(webdriver, props.getProperty("homepage"));  // TODO props into map
         // 1. Open test site by URL
-        home.open();
+        home.load();
         // 2. Assert Browser title
         softly.assertThat(webdriver.getTitle())
-              .isEqualTo(properties.getProperty("displayed_title"));
+              .isEqualTo(props.getProperty("displayed_title"));
         // 3. Perform login
-        home.getUpperNavPanel().login(properties.getProperty("username"), properties.getProperty("password"));
+        //home.getUpperNavPanel().login(props.getProperty("username"), props.getProperty("password"));
+        home.login(props.getProperty("username"), props.getProperty("password"));
         // 4. Assert Username is loggined
-        softly.assertThat(home.getUpperNavPanel().getLoggedUserName())
-              .isEqualTo(properties.getProperty("displayed_name"));
+        softly.assertThat(home.getLoggedUserName())
+              .isEqualTo(props.getProperty("displayed_name"));
         // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
-        List<String> expectedUpperNames = Arrays.asList(properties.getProperty("ex1_upper_items").split(","));
         softly.assertThat((home.getUpperNavPanel().getNavElements()))
               .hasSize(4)
               .allMatch(WebElement::isDisplayed);
+
+        List<String> expectedUpperNames = Arrays.asList(props.getProperty("ex1_upper_items").split(";"));
         softly.assertThat(home.getUpperNavPanel().getTextsOfNavElements())
               .isEqualTo(expectedUpperNames);
         // 6. Assert that there are 4 images on the Index Page and they are displayed
+        softly.assertThat(home.getImageList())
+              .hasSize(4)
+              .allMatch(WebElement::isDisplayed);
+        // 7. Assert that there are 4 texts on the Index Page under icons and they have proper text
+        List<String> expectedImageCaptions = Arrays.asList(props.getProperty("captions").split(";"));
+        softly.assertThat(home.getImageCaptionsList())
+                      .hasSize(4)
+                      .isEqualTo(expectedImageCaptions);
+        // 8. Assert that there is the iframe with “Frame Button” exist
+        // TODO check if iframe switching rigmarole can be implemented with Fluent Page Objects
 
 
 
-        //        WebElement nameLabel = webdriver.findElement(By.xpath("//*[@id=\"user-name\" and not(@class=\"hidden\")]"));
-        //        softly.assertThat(nameLabel.getText())
-        //              .isEqualTo(TEST_USER_DATA.get("DISPLAYED_NAME"));
-        //        // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
-        //        WebElement upperNavBar = webdriver.findElement(By.className("m-l8"));
-        //        softly.assertThat(getDirectChildren(upperNavBar))
-        //              .hasSize(4)
-        //              .allMatch(WebElement::isDisplayed);
-        //        softly.assertThat(getListOfDirectChildrenTexts(upperNavBar))
-        //              .isEqualTo(UPPER_NAV_BAR_EXPECTED_TEXTS);
-        //        // 6. Assert that there are 4 images on the Index Page and they are displayed
-        //        WebElement imageRow = webdriver.findElement(By.cssSelector(".row.clerafix.benefits"));
-        //        List<WebElement> images = imageRow.findElements(By.className("benefit-icon"));
-        //        softly.assertThat(images)
-        //              .hasSize(4)
-        //              .allMatch(WebElement::isDisplayed);
-        //        // 7. Assert that there are 4 texts on the Index Page under icons and they have proper text
-        //        List<String> textsUnderImages = imageRow.findElements(By.className("benefit-txt")).stream()
-        //                                                .map(elem -> elem.getAttribute("innerText"))
-        //                                                .collect(Collectors.toList());
-        //        softly.assertThat(textsUnderImages)
-        //              .hasSize(4)
-        //              .isEqualTo(EXPECTED_TEXTS_UNDER_IMAGES);
         //        // 8. Assert that there is the iframe with “Frame Button” exist
         //        List<WebElement> iframes = webdriver
         //            .findElements(By.cssSelector("[src='https://jdi-testing.github.io/jdi-light/frame-button.html']"));

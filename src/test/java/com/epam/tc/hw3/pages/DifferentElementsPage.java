@@ -8,7 +8,7 @@ public class DifferentElementsPage extends BasePage {
 
     public DifferentElementsPage(WebDriver webdriver, String url) {
         super(webdriver, url);
-        logDisplayComponent = new LogDisplayComponent();
+        logDisplayComponent = new LogDisplayComponent(webdriver);
     }
 
     public LogDisplayComponent getLogDisplayComponent() {

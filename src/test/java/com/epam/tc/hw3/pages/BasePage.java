@@ -12,14 +12,14 @@ public abstract class BasePage {
     protected String baseURL;
 
     public BasePage(WebDriver webdriver, String url) {
-        PageFactory.initElements(webdriver, this);
+        PageFactory.initElements(webdriver, this);  // allows FindBy for page elements
         upperNavPanel = new UpperNavPanel(webdriver);
         leftNavPanel = new LeftNavPanel(webdriver);
         this.webdriver = webdriver;
         baseURL = url;
     }
 
-    public void open() {
+    public void load() {
         webdriver.navigate().to(baseURL);
     }
 
