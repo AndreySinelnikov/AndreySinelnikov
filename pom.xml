@@ -20,6 +20,9 @@
         <checkstyle.version>8.42</checkstyle.version>
         <selenium-java.version>3.141.59</selenium-java.version>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
+        <allure-testng.version>2.14.0</allure-testng.version>
+        <aspectj.version>1.9.8.M1</aspectj.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
     </properties>
 
     <build>
@@ -32,6 +35,29 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${maven.surefire.plugin.suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
+                    <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>
+                    <systemProperties>
+                        <property>
+                            <name>allure.results.directory</name>
+                            <value>${project.build.directory}/allure-results</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
+                <configuration>
+                    <reportVersion>${allure-maven.version}</reportVersion>
                 </configuration>
             </plugin>
 
@@ -103,6 +129,12 @@
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure-testng.version}</version>
         </dependency>
 
     </dependencies>
