@@ -11,8 +11,8 @@ public class LeftNavPanel extends AbstractComponent {
     @FindBy(css = ".sidebar-menu.left")
     private WebElement navElementContainer;
 
-    public LeftNavPanel(WebDriver webdriver) {
-        super(webdriver);
+    public LeftNavPanel(WebDriver webDriver) {
+        super(webDriver);
     }
 
     public List<WebElement> getNavElements() {

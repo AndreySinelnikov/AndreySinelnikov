@@ -32,8 +32,8 @@ public class HomePage extends AbstractPage {
     @FindBy(css = "[src='https://jdi-testing.github.io/jdi-light/frame-button.html']")
     private List<WebElement> iframesWithFrameButton;
 
-    public HomePage(WebDriver webdriver, String url) {
-        super(webdriver, url);
+    public HomePage(WebDriver webDriver, String url) {
+        super(webDriver, url);
     }
 
     public void login(String username, String password) {

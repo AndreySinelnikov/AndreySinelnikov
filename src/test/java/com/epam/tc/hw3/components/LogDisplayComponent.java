@@ -10,8 +10,8 @@ public class LogDisplayComponent extends AbstractComponent {
     @FindBy(css = ".logs li")
     private List<WebElement> logEntryContainer;
 
-    public LogDisplayComponent(WebDriver webdriver) {
-        super(webdriver);
+    public LogDisplayComponent(WebDriver webDriver) {
+        super(webDriver);
     }
 
     public List<String> getLogEntriesWithoutDates() {

@@ -11,8 +11,8 @@ public class UpperNavPanel extends AbstractComponent {
     @FindBy(className = "m-l8")
     private WebElement navElementContainer;
 
-    public UpperNavPanel(WebDriver webdriver) {
-        super(webdriver);
+    public UpperNavPanel(WebDriver webDriver) {
+        super(webDriver);
     }
 
     public List<WebElement> getNavElements() {

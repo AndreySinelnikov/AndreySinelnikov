@@ -19,9 +19,9 @@ public class DifferentElementsPage extends AbstractPage {
     @FindBy(tagName = "select")
     private WebElement colorSelect;
 
-    public DifferentElementsPage(WebDriver webdriver, String url) {
-        super(webdriver, url);
-        logDisplayComponent = new LogDisplayComponent(webdriver);
+    public DifferentElementsPage(WebDriver webDriver, String url) {
+        super(webDriver, url);
+        logDisplayComponent = new LogDisplayComponent(webDriver);
     }
 
     public LogDisplayComponent getLogDisplayComponent() {
