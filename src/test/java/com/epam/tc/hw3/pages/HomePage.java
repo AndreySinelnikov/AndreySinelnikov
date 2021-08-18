@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePage extends BasePage {
+public class HomePage extends AbstractPage {
     @FindBy(id = "name")
     private WebElement nameInput;
 
@@ -61,11 +61,11 @@ public class HomePage extends BasePage {
 
     public DifferentElementsPage openDifferentElementsPage(String url) {
         clickItem(getUpperNavPanel().getNavElements(), "SERVICE");
-        webdriver.findElement(By.cssSelector("[href='different-elements.html']")).click();
+        webDriver.findElement(By.cssSelector("[href='different-elements.html']")).click();
 
-        WebDriverWait wait = new WebDriverWait(webdriver, 5);
+        WebDriverWait wait = new WebDriverWait(webDriver, 5);
         wait.until(ExpectedConditions.urlMatches("https://jdi-testing.github.io/jdi-light/different-elements.html"));
 
-        return new DifferentElementsPage(webdriver, url);
+        return new DifferentElementsPage(webDriver, url);
     }
 }

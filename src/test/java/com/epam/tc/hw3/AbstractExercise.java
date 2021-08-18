@@ -12,15 +12,15 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public abstract class AbstractExercise {
-    protected WebDriver webdriver;
+    protected WebDriver webDriver;
     protected SoftAssertions softly;
-    public Properties props;
+    protected Properties props;
 
     @BeforeMethod
     public void setupMethod() {
         WebDriverManager.chromedriver().setup();
-        webdriver = new ChromeDriver();
-        webdriver.manage().window().maximize();
+        webDriver = new ChromeDriver();
+        webDriver.manage().window().maximize();
         softly = new SoftAssertions();
         props = new Properties();
 
@@ -36,6 +36,6 @@ public abstract class AbstractExercise {
 
     @AfterMethod
     public void teardownMethod() {
-        webdriver.quit();
+        webDriver.quit();
     }
 }

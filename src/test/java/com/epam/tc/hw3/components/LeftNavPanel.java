@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LeftNavPanel extends BaseComponent {
+public class LeftNavPanel extends AbstractComponent {
     @FindBy(css = ".sidebar-menu.left")
     private WebElement navElementContainer;
 

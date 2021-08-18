@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class UpperNavPanel extends BaseComponent {
+public class UpperNavPanel extends AbstractComponent {
     @FindBy(className = "m-l8")
     private WebElement navElementContainer;
 

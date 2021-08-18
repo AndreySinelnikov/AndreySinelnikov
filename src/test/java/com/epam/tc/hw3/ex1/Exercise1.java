@@ -15,11 +15,11 @@ public class Exercise1 extends AbstractExercise {
 
     @Test
     public void exercise1() {
-        HomePage home = new HomePage(webdriver, props.getProperty("homepage"));
+        HomePage home = new HomePage(webDriver, props.getProperty("homepage"));
         // 1. Open test site by URL
-        home.load();
+        home.open();
         // 2. Assert Browser title
-        softly.assertThat(webdriver.getTitle())
+        softly.assertThat(webDriver.getTitle())
               .isEqualTo(props.getProperty("displayed_title"));
         // 3. Perform login
         home.login(props.getProperty("username"), props.getProperty("password"));
@@ -48,12 +48,12 @@ public class Exercise1 extends AbstractExercise {
         softly.assertThat(home.getIframesWithFrameButton())
               .isNotEmpty();
         // 9. Switch to the iframe and check that there is “Frame Button” in the iframe
-        webdriver.switchTo().frame(home.getIframesWithFrameButton().get(0));
-        List<WebElement> frameButtons = webdriver.findElements(By.id("frame-button"));
+        webDriver.switchTo().frame(home.getIframesWithFrameButton().get(0));
+        List<WebElement> frameButtons = webDriver.findElements(By.id("frame-button"));
         softly.assertThat(frameButtons)
               .isNotEmpty();
         // 10. Switch to original window back
-        webdriver.switchTo().parentFrame();
+        webDriver.switchTo().parentFrame();
         // 11. Assert that there are 5 items in the Left Section are displayed and they have proper text
         softly.assertThat((home.getLeftNavPanel().getNavElements()))
               .hasSize(5)

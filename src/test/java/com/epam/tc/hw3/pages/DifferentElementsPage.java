@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-public class DifferentElementsPage extends BasePage {
+public class DifferentElementsPage extends AbstractPage {
     private LogDisplayComponent logDisplayComponent;
 
     @FindBy(className = "label-checkbox")

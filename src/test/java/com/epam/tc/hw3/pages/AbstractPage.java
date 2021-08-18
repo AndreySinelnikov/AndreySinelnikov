@@ -1,26 +1,24 @@
 package com.epam.tc.hw3.pages;
 
+import com.epam.tc.hw3.components.AbstractComponent;
 import com.epam.tc.hw3.components.LeftNavPanel;
 import com.epam.tc.hw3.components.UpperNavPanel;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
-public abstract class BasePage {
-    protected WebDriver webdriver;
+public abstract class AbstractPage extends AbstractComponent {
     protected UpperNavPanel upperNavPanel;
     protected LeftNavPanel leftNavPanel;
     protected String baseURL;
 
-    public BasePage(WebDriver webdriver, String url) {
-        PageFactory.initElements(webdriver, this);  // allows FindBy for page elements
-        upperNavPanel = new UpperNavPanel(webdriver);
-        leftNavPanel = new LeftNavPanel(webdriver);
-        this.webdriver = webdriver;
+    protected AbstractPage(WebDriver webDriver, String url) {
+        super(webDriver);
+        upperNavPanel = new UpperNavPanel(webDriver);
+        leftNavPanel = new LeftNavPanel(webDriver);
         baseURL = url;
     }
 
-    public void load() {
-        webdriver.navigate().to(baseURL);
+    public void open() {
+        webDriver.navigate().to(baseURL);
     }
 
     public UpperNavPanel getUpperNavPanel() {

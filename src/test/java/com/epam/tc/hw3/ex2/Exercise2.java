@@ -13,11 +13,11 @@ public class Exercise2 extends AbstractExercise {
 
     @Test
     public void exercise2() {
-        HomePage home = new HomePage(webdriver, props.getProperty("homepage"));
+        HomePage home = new HomePage(webDriver, props.getProperty("homepage"));
         // 1. Open test site by URL
-        home.load();
+        home.open();
         // 2. Assert Browser title
-        softly.assertThat(webdriver.getTitle())
+        softly.assertThat(webDriver.getTitle())
               .isEqualTo(props.getProperty("displayed_title"));
         // 3. Perform login
         home.login(props.getProperty("username"), props.getProperty("password"));
@@ -35,7 +35,7 @@ public class Exercise2 extends AbstractExercise {
         diffElemPage.selectColor("Yellow");
         // 9. Assert there are log rows corresponding to steps 6, 7, 8 displaying toggled values
         List<String> expectedLogEntries = Arrays.asList(props.getProperty("log_entries").split(";"));
-        softly.assertThat(diffElemPage.getLogDisplayComponent().getLogEntriesWithoutDate())
+        softly.assertThat(diffElemPage.getLogDisplayComponent().getLogEntriesWithoutDates())
               .containsAll(expectedLogEntries);
 
         softly.assertAll();

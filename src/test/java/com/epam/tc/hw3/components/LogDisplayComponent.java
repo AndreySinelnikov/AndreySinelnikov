@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LogDisplayComponent extends BaseComponent {
+public class LogDisplayComponent extends AbstractComponent {
     @FindBy(css = ".logs li")
     private List<WebElement> logEntryContainer;
 
@@ -14,7 +14,7 @@ public class LogDisplayComponent extends BaseComponent {
         super(webdriver);
     }
 
-    public List<String> getLogEntriesWithoutDate() {
+    public List<String> getLogEntriesWithoutDates() {
         return logEntryContainer.stream()
                          .map(WebElement::getText)
                          .map(entry -> entry.substring(9))
