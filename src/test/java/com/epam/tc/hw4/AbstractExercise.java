@@ -1,6 +1,8 @@
 package com.epam.tc.hw4;
 
 
+import com.epam.tc.hw4.steps.ActionStep;
+import com.epam.tc.hw4.steps.AssertionStep;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -15,14 +17,18 @@ public abstract class AbstractExercise {
     protected WebDriver webDriver;
     protected SoftAssertions softly;
     protected Properties props;
+    protected ActionStep actionStep;
+    protected AssertionStep assertionStep;
 
     @BeforeMethod
     public void setupMethod() {
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
-        softly = new SoftAssertions();
+        softly = new SoftAssertions(); // might have to remove it, asserts go into Steps
         props = new Properties();
+        actionStep = new ActionStep(webDriver);
+        assertionStep = new AssertionStep(webDriver);
 
         // property reading from file has to be wrapped in a try-catch IOE block to work
         try {

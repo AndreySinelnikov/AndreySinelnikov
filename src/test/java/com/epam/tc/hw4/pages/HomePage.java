@@ -43,6 +43,10 @@ public class HomePage extends AbstractPage {
         loginButton.click();
     }
 
+    public String getTitle() {
+        return webDriver.getTitle();
+    }
+
     public String getLoggedUserName() {
         return usernameLabel.getText();
     }

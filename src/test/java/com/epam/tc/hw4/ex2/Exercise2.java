@@ -13,19 +13,19 @@ public class Exercise2 extends AbstractExercise {
 
     @Test
     public void exercise2() {
-        HomePage home = new HomePage(webDriver, props.getProperty("homepage"));
+        HomePage home = new HomePage(webDriver, props.getProperty("homepage_url"));
         // 1. Open test site by URL
         home.open();
         // 2. Assert Browser title
         softly.assertThat(webDriver.getTitle())
-              .isEqualTo(props.getProperty("displayed_title"));
+              .isEqualTo(props.getProperty("expected_homepage_title"));
         // 3. Perform login
         home.login(props.getProperty("username"), props.getProperty("password"));
         // 4. Assert Username is loggined
         softly.assertThat(home.getLoggedUserName())
               .isEqualTo(props.getProperty("displayed_name"));
         // 5. Open through the header menu Service -> Different Elements Page
-        DifferentElementsPage diffElemPage = home.openDifferentElementsPage(props.getProperty("elements_page"));
+        DifferentElementsPage diffElemPage = home.openDifferentElementsPage(props.getProperty("elements_page_url"));
         // 6. Select checkboxes - Water, Wind;
         clickItem(diffElemPage.getCheckboxContainer(), "Water");
         clickItem(diffElemPage.getCheckboxContainer(), "Wind");

@@ -5,3 +5,19 @@ GOAL: Add Allure report functionality to the project
    ADD allure results directory systemProperty.
    IN build/surefire plugin dependency section: ADD aspectjweaver dependency.
 3. After running tests ('mvn clean test') run 'mvn allure:serve' to get a report.
+
+----------
+
+NOTE: Relevant waits example
+
+WebdriverWait wait = new WebDriverWait(driver, 10L);
+
+public void sendKeysToSearchInputField(String text) {
+        wait.until(visibilityOf(searchInputField)).sendKeys(text);
+    }
+
+    public void clickToSearchButton() {
+        wait.until(elementToBeClickable(searchButton)).click();
+    }
+
+----------

@@ -15,12 +15,12 @@ public class Exercise1 extends AbstractExercise {
 
     @Test
     public void exercise1() {
-        HomePage home = new HomePage(webDriver, props.getProperty("homepage"));
+        HomePage home = new HomePage(webDriver, props.getProperty("homepage_url"));
         // 1. Open test site by URL
         home.open();
         // 2. Assert Browser title
         softly.assertThat(webDriver.getTitle())
-              .isEqualTo(props.getProperty("displayed_title"));
+              .isEqualTo(props.getProperty("expected_homepage_title"));
         // 3. Perform login
         home.login(props.getProperty("username"), props.getProperty("password"));
         // 4. Assert Username is loggined

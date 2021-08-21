@@ -142,9 +142,6 @@
     <profiles>
         <profile>
             <id>hw1test_add-and-sub</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_1/addition-and-subtraction-suite.xml</maven.surefire.plugin.suiteXmlFile>
             </properties>
@@ -175,6 +172,16 @@
             <id>hw3test_all-tests</id>
             <properties>
                 <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_3/all-tests-suite.xml</maven.surefire.plugin.suiteXmlFile>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>hw4test_exercise-1</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_4/exercise-1.xml</maven.surefire.plugin.suiteXmlFile>
             </properties>
         </profile>
     </profiles>
