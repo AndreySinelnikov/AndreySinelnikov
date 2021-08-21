@@ -1,5 +1,7 @@
 package com.epam.tc.hw4.pages;
 
+import static com.epam.tc.hw4.Utils.clickItem;
+
 import com.epam.tc.hw3.components.LogDisplayComponent;
 import java.util.List;
 import org.openqa.selenium.WebDriver;
@@ -34,6 +36,14 @@ public class DifferentElementsPage extends AbstractPage {
 
     public List<WebElement> getRadioButtonsContainer() {
         return radioButtonsContainer;
+    }
+
+    public void clickCheckbox(String checkboxText) {
+        clickItem(checkboxContainer, checkboxText);
+    }
+
+    public void clickRadioButton(String buttonText) {
+        clickItem(radioButtonsContainer, buttonText);
     }
 
     public void selectColor(String colorName) {

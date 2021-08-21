@@ -69,6 +69,11 @@ public class AssertionStep extends AbstractStep {
         containerShouldHaveNumberOfDisplayedItemsWithExpectedTexts(leftNavPanelItems, 5, expectedTexts);
     }
 
+    @Step("Assert that there are log entries corresponding to select actions")
+    public void selectActionsShouldBeLogged(String expectedEntries) {
+        assertThat(differentElementsPage.getLogDisplayComponent().getLogEntriesWithoutDates())
+            .isEqualTo(Arrays.asList(expectedEntries.split(";")));
+    }
 
     // utility method
     private static void containerShouldHaveNumberOfDisplayedItemsWithExpectedTexts(List<WebElement> containerItems,

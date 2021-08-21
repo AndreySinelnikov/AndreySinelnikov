@@ -8,6 +8,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
@@ -23,13 +24,13 @@ public abstract class AbstractExercise {
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
-        props = parsePropertiesFromFile("config.properties"); // changed from base hw4
+        props = parsePropertiesFromFile("config.properties");
         actionStep = new ActionStep(webDriver, props);
         assertionStep = new AssertionStep(webDriver, props);
     }
 
-    @AfterMethod
-    public void teardownMethod() {
+    @AfterClass
+    public void teardownClass() {
         webDriver.quit();
     }
 }

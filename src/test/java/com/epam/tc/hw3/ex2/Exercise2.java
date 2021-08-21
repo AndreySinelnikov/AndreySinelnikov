@@ -34,7 +34,7 @@ public class Exercise2 extends AbstractExercise {
         // 8. Select in dropdown - Yellow
         diffElemPage.selectColor("Yellow");
         // 9. Assert there are log rows corresponding to steps 6, 7, 8 displaying toggled values
-        List<String> expectedLogEntries = Arrays.asList(props.getProperty("log_entries").split(";"));
+        List<String> expectedLogEntries = Arrays.asList(props.getProperty("expected_log_entries").split(";"));
         softly.assertThat(diffElemPage.getLogDisplayComponent().getLogEntriesWithoutDates())
               .containsAll(expectedLogEntries);
 

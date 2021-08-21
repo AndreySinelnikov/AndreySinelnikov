@@ -1,45 +1,37 @@
 package com.epam.tc.hw4.ex2;
 
-import static com.epam.tc.hw3.Utils.clickItem;
-
-import com.epam.tc.hw3.AbstractExercise;
-import com.epam.tc.hw3.pages.DifferentElementsPage;
-import com.epam.tc.hw3.pages.HomePage;
-import java.util.Arrays;
-import java.util.List;
+import com.epam.tc.hw4.AbstractExercise;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
 public class Exercise2 extends AbstractExercise {
 
     @Test
+    @Feature("Homework 4")
+    @Story("Exercise 2")
     public void exercise2() {
-        HomePage home = new HomePage(webDriver, props.getProperty("homepage_url"));
         // 1. Open test site by URL
-        home.open();
+        actionStep.openHomePage();
         // 2. Assert Browser title
-        softly.assertThat(webDriver.getTitle())
-              .isEqualTo(props.getProperty("expected_homepage_title"));
+        assertionStep.homePageTitleShouldBeEqualToExpected(props.getProperty("expected_homepage_title"));
         // 3. Perform login
-        home.login(props.getProperty("username"), props.getProperty("password"));
+        actionStep.login(props.getProperty("username"), props.getProperty("password"));
         // 4. Assert Username is loggined
-        softly.assertThat(home.getLoggedUserName())
-              .isEqualTo(props.getProperty("expected_user"));
+        assertionStep.displayedUserShouldBeEqualToExpected(props.getProperty("expected_user"));
         // 5. Open through the header menu Service -> Different Elements Page
-        DifferentElementsPage diffElemPage = home.openDifferentElementsPage(props.getProperty("elements_page_url"));
+        actionStep.openDifferentElementsPage(props.getProperty("elements_page_url"));
         // 6. Select checkboxes - Water, Wind;
-        clickItem(diffElemPage.getCheckboxContainer(), "Water");
-        clickItem(diffElemPage.getCheckboxContainer(), "Wind");
+        actionStep.selectElementCheckbox(props.getProperty("checkbox_1"));
+        actionStep.selectElementCheckbox(props.getProperty("checkbox_2"));
         // 7. Select radio - Selen
-        clickItem(diffElemPage.getRadioButtonsContainer(), "Selen");
+        actionStep.selectRadioButton(props.getProperty("radio_button"));
         // 8. Select in dropdown - Yellow
-        diffElemPage.selectColor("Yellow");
+        actionStep.selectColor(props.getProperty("color"));
         // 9. Assert there are log rows corresponding to steps 6, 7, 8 displaying toggled values
-        List<String> expectedLogEntries = Arrays.asList(props.getProperty("log_entries").split(";"));
-        softly.assertThat(diffElemPage.getLogDisplayComponent().getLogEntriesWithoutDates())
-              .containsAll(expectedLogEntries);
-
-        softly.assertAll();
+        assertionStep.selectActionsShouldBeLogged(props.getProperty("expected_log_entries"));
         // 12. Close Browser
-        // handled by @AfterMethod
+        // Handled by @AfterMethod
     }
+
 }

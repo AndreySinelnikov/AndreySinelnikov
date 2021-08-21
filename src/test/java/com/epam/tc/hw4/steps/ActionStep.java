@@ -31,4 +31,24 @@ public class ActionStep extends AbstractStep {
     public void switchFromIframeToParentFrame(WebDriver webDriver) {
         webDriver.switchTo().parentFrame();
     }
+
+    @Step("Open Different Elements page via Service item in upper navigation panel")
+    public void openDifferentElementsPage(String url) {
+        differentElementsPage = homePage.openDifferentElementsPage(url);
+    }
+
+    @Step("Select '{checkboxText}' element checkbox")
+    public void selectElementCheckbox(String checkboxText) {
+        differentElementsPage.clickCheckbox(checkboxText);
+    }
+
+    @Step("Select '{buttonText}' radio button")
+    public void selectRadioButton(String buttonText) {
+        differentElementsPage.clickRadioButton(buttonText);
+    }
+
+    @Step("Select color '{colorName}' in dropdown menu")
+    public void selectColor(String colorName) {
+        differentElementsPage.selectColor(colorName);
+    }
 }
