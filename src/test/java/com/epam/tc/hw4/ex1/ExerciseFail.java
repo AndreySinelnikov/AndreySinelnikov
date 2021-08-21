@@ -2,23 +2,20 @@ package com.epam.tc.hw4.ex1;
 
 
 import com.epam.tc.hw4.AbstractExercise;
-import com.epam.tc.hw4.AllureListener;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-
-public class Exercise1 extends AbstractExercise {
+public class ExerciseFail extends AbstractExercise {
 
     @Test
     @Feature("Homework 4")
-    @Story("Exercise 1")
+    @Story("Exercise Fail")
     public void exercise1() {
         // 1. Open test site by URL
         actionStep.openHomePage();
         // 2. Assert Browser title
-        assertionStep.homePageTitleShouldBeEqualToExpected(props.getProperty("expected_homepage_title"));
+        assertionStep.homePageTitleShouldBeEqualToExpected("false");
         // 3. Perform login
         actionStep.login(props.getProperty("username"), props.getProperty("password"));
         // 4. Assert Username is loggined

@@ -1,11 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="Exercise-1-and-2">
-<!--  <listeners>-->
-<!--    <listener class-name="com.epam.tc.hw4.AllureListener" />-->
-<!--  </listeners>-->
-
-  <test name="exercise-1-and-2" >
+<suite name="Exercise 1, 2 and Fail">
+  <test name="exercise-1-2-and-fail" >
     <packages>
       <package name="com.epam.tc.hw4.ex1" />
       <package name="com.epam.tc.hw4.ex2" />
