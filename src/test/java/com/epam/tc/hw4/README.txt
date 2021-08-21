@@ -16,6 +16,19 @@ GOAL: Rework tests into Allure-compliant step sequences
 
 ----------
 
+GOAL: Add Listener that has access to test context
+
+1. ADD Listener class implementing ITestListener to project. Override one of the methods -- like onTestFailure -- with
+   relevant actions.
+2. When your listener has to access test-specific attributes (i.e. test webdriver so the listener
+   can take screenshots):
+   IN @Before method for the test, ADD ITestContext context as a parameter.
+   IN @Before method for the test, ADD context.setAttribute(name, object).
+   IN the listener with ITestResult parameter, use iTestResult.getTestContext().getAttribute(name) to access set attribute.
+3. IN the test class that has to be monitored by listener, ADD @Listeners({ ListenerName.class })
+
+__________
+
 NOTE: Relevant waits example
 
 WebdriverWait wait = new WebDriverWait(driver, 10L);

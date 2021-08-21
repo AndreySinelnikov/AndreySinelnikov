@@ -2,9 +2,12 @@ package com.epam.tc.hw4.ex1;
 
 
 import com.epam.tc.hw4.AbstractExercise;
+import com.epam.tc.hw4.AllureListener;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
 
 public class Exercise1 extends AbstractExercise {
 
@@ -37,6 +40,7 @@ public class Exercise1 extends AbstractExercise {
         assertionStep.leftNavPanelShouldHaveProperDisplayedItems(props.getProperty("ex1_left_items"));
         // 12. Close Browser
         //        // handled by @AfterMethod
+        assertionStep.homePageTitleShouldBeEqualToExpected("kek");
     }
 }
 
