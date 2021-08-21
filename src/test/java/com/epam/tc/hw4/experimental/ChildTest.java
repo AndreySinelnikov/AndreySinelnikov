@@ -1,11 +1,11 @@
 package com.epam.tc.hw4.experimental;
 
-import io.qameta.allure.Epic;
+import com.epam.tc.hw4.AbstractExercise;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
-public class ChildTest extends BaseTest {
+public class ChildTest extends AbstractExercise {
 
     @Test
     @Feature("Homework 4")

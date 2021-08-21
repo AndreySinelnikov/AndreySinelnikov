@@ -23,7 +23,7 @@ public class Exercise2 extends AbstractExercise {
         home.login(props.getProperty("username"), props.getProperty("password"));
         // 4. Assert Username is loggined
         softly.assertThat(home.getLoggedUserName())
-              .isEqualTo(props.getProperty("displayed_name"));
+              .isEqualTo(props.getProperty("expected_user"));
         // 5. Open through the header menu Service -> Different Elements Page
         DifferentElementsPage diffElemPage = home.openDifferentElementsPage(props.getProperty("elements_page_url"));
         // 6. Select checkboxes - Water, Wind;
