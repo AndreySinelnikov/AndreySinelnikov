@@ -4,7 +4,9 @@ GOAL: Add Allure report functionality to the project
 2. IN build/surefire plugin configuration section: ADD argLine tag with path to aspectj weaver jar,
    ADD allure results directory systemProperty.
    IN build/surefire plugin dependency section: ADD aspectjweaver dependency.
-3. After running tests ('mvn clean test') run 'mvn allure:serve' to get a report.
+   IN reporting section: ADD allure-maven artifact with <excludeDefaults> set to true. (UNCLEAR)
+3. ADD allure.properties file to test/resources; allure properties like report directory are listed there.
+4. After running tests ('mvn clean test') run 'mvn allure:serve' to get a report.
 __________
 
 GOAL: Rework tests into Allure-compliant step sequences
