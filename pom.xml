@@ -20,6 +20,9 @@
         <checkstyle.version>8.42</checkstyle.version>
         <selenium-java.version>3.141.59</selenium-java.version>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
+        <allure-testng.version>2.14.0</allure-testng.version>
+        <aspectj.version>1.9.8.M1</aspectj.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
     </properties>
 
     <build>
@@ -29,9 +32,33 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
                     <suiteXmlFiles>
                         <suiteXmlFile>${maven.surefire.plugin.suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
+                    <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>
+                    <systemProperties>
+<!--                        <property>-->
+<!--                            <name>allure.results.directory</name>-->
+<!--                            <value>${project.build.directory}/target/allure-results</value>-->
+<!--                        </property>-->
+                    </systemProperties>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
+                <configuration>
+                    <reportVersion>${allure-maven.version}</reportVersion>
                 </configuration>
             </plugin>
 
@@ -105,14 +132,18 @@
             <version>${webdrivermanager.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure-testng.version}</version>
+        </dependency>
+
+
     </dependencies>
 
     <profiles>
         <profile>
             <id>hw1test_add-and-sub</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_1/addition-and-subtraction-suite.xml</maven.surefire.plugin.suiteXmlFile>
             </properties>
@@ -145,6 +176,30 @@
                 <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_3/all-tests-suite.xml</maven.surefire.plugin.suiteXmlFile>
             </properties>
         </profile>
+
+        <profile>
+            <id>hw4test_all-tests</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_4/all-tests-suite.xml</maven.surefire.plugin.suiteXmlFile>
+            </properties>
+        </profile>
     </profiles>
+
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
+                <configuration>
+                    <reportVersion>${allure-maven.version}</reportVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>

@@ -15,17 +15,17 @@ public class Exercise1 extends AbstractExercise {
 
     @Test
     public void exercise1() {
-        HomePage home = new HomePage(webDriver, props.getProperty("homepage"));
+        HomePage home = new HomePage(webDriver, props.getProperty("homepage_url"));
         // 1. Open test site by URL
         home.open();
         // 2. Assert Browser title
         softly.assertThat(webDriver.getTitle())
-              .isEqualTo(props.getProperty("displayed_title"));
+              .isEqualTo(props.getProperty("expected_homepage_title"));
         // 3. Perform login
         home.login(props.getProperty("username"), props.getProperty("password"));
         // 4. Assert Username is loggined
         softly.assertThat(home.getLoggedUserName())
-              .isEqualTo(props.getProperty("displayed_name"));
+              .isEqualTo(props.getProperty("expected_user"));
         // 5. Assert that there are 4 items on the header section are displayed and they have proper texts
         softly.assertThat((home.getUpperNavPanel().getNavElements()))
               .hasSize(4)
@@ -39,7 +39,7 @@ public class Exercise1 extends AbstractExercise {
               .hasSize(4)
               .allMatch(WebElement::isDisplayed);
         // 7. Assert that there are 4 texts on the Index Page under icons and they have proper text
-        List<String> expectedImageCaptionTexts = Arrays.asList(props.getProperty("caption_texts").split(";"));
+        List<String> expectedImageCaptionTexts = Arrays.asList(props.getProperty("expected_caption_texts").split(";"));
         softly.assertThat(home.getImageCaptions())
               .hasSize(4);
         softly.assertThat(getTextsOfElements(home.getImageCaptions()))
