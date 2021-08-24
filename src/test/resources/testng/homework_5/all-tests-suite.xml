@@ -3,9 +3,7 @@
 <suite name="Exercises 1, 2, 3">
   <test name="exercises 1, 2, 3" >
     <packages>
-      <package name="com.epam.tc.hw5.ex1" />
-      <package name="com.epam.tc.hw5.ex2" />
-      <package name="com.epam.tc.hw5.ex3" />
+      <package name="com.epam.tc.hw5.cucumber" />
     </packages>
   </test>
 </suite>
