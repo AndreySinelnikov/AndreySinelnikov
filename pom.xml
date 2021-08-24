@@ -23,6 +23,7 @@
         <allure-testng.version>2.14.0</allure-testng.version>
         <aspectj.version>1.9.8.M1</aspectj.version>
         <allure-maven.version>2.10.0</allure-maven.version>
+        <cucumber-testng.version>6.11.0</cucumber-testng.version>
     </properties>
 
     <build>
@@ -138,7 +139,12 @@
             <version>${allure-testng.version}</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber-testng.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <profiles>
@@ -179,11 +185,18 @@
 
         <profile>
             <id>hw4test_all-tests</id>
+            <properties>
+                <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_4/all-tests-suite.xml</maven.surefire.plugin.suiteXmlFile>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>hw5test_all-tests</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_4/all-tests-suite.xml</maven.surefire.plugin.suiteXmlFile>
+                <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_5/all-tests-suite.xml</maven.surefire.plugin.suiteXmlFile>
             </properties>
         </profile>
     </profiles>
