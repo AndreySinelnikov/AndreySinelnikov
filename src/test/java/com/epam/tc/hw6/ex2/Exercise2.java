@@ -1,6 +1,6 @@
 package com.epam.tc.hw6.ex2;
 
-import com.epam.tc.hw4.AbstractExercise;
+import com.epam.tc.hw6.AbstractExercise;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class Exercise2 extends AbstractExercise {
 
     @Test
-    @Feature("Homework 4")
+    @Feature("Homework 6")
     @Story("Exercise 2")
     public void exercise2() {
         // 1. Open test site by URL

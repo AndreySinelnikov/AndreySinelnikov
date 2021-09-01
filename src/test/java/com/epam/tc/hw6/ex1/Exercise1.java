@@ -1,7 +1,8 @@
 package com.epam.tc.hw6.ex1;
 
 
-import com.epam.tc.hw4.AbstractExercise;
+import com.epam.tc.hw6.AbstractExercise;
+import com.epam.tc.hw6.driver.WebDriverSingleton;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
@@ -9,7 +10,7 @@ import org.testng.annotations.Test;
 public class Exercise1 extends AbstractExercise {
 
     @Test
-    @Feature("Homework 4")
+    @Feature("Homework 6")
     @Story("Exercise 1")
     public void exercise1() {
         // 1. Open test site by URL
@@ -29,10 +30,10 @@ public class Exercise1 extends AbstractExercise {
         // 8. Assert that there is the iframe with “Frame Button” exist
         assertionStep.iframeWithFrameButtonShouldExist();
         // 9. Switch to the iframe and check that there is “Frame Button” in the iframe
-        actionStep.switchToIframeWithFrameButton(webDriver);
-        assertionStep.frameButtonShouldExistInTheIframe(webDriver);
+        actionStep.switchToIframeWithFrameButton(WebDriverSingleton.getWebDriver());
+        assertionStep.frameButtonShouldExistInTheIframe(WebDriverSingleton.getWebDriver());
         // 10. Switch to original window back
-        actionStep.switchFromIframeToParentFrame(webDriver);
+        actionStep.switchFromIframeToParentFrame(WebDriverSingleton.getWebDriver());
         // 11. Assert that there are 5 items in the Left Section are displayed and they have proper text
         assertionStep.leftNavPanelShouldHaveProperDisplayedItems(props.getProperty("ex1_left_items"));
         // 12. Close Browser
