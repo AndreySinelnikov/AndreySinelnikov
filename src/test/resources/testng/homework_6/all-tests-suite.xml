@@ -5,7 +5,6 @@
     <packages>
       <package name="com.epam.tc.hw6.ex1" />
       <package name="com.epam.tc.hw6.ex2" />
-<!--      <package name="com.epam.tc.hw6.test" />-->
     </packages>
   </test>
 </suite>
