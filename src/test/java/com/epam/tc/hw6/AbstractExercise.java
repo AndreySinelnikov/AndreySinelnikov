@@ -1,7 +1,6 @@
 package com.epam.tc.hw6;
 
 import static com.epam.tc.hw4.Utils.parsePropertiesFromFile;
-import static com.epam.tc.hw6.driver.SimpleDriver.createRemoteChromeDriver;
 
 import com.epam.tc.hw4.AllureListener;
 import com.epam.tc.hw4.steps.ActionStep;
