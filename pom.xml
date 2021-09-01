@@ -23,6 +23,7 @@
         <allure-testng.version>2.14.0</allure-testng.version>
         <aspectj.version>1.9.8.M1</aspectj.version>
         <allure-maven.version>2.10.0</allure-maven.version>
+        <jdi-light-html.version>1.3.14</jdi-light-html.version>
     </properties>
 
     <build>
@@ -138,7 +139,11 @@
             <version>${allure-testng.version}</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>${jdi-light-html.version}</version>
+        </dependency>
     </dependencies>
 
     <profiles>
@@ -179,11 +184,18 @@
 
         <profile>
             <id>hw4test_all-tests</id>
+            <properties>
+                <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_4/all-tests-suite.xml</maven.surefire.plugin.suiteXmlFile>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>hw7test_jdi</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_4/all-tests-suite.xml</maven.surefire.plugin.suiteXmlFile>
+                <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_7/jdi-test.xml</maven.surefire.plugin.suiteXmlFile>
             </properties>
         </profile>
     </profiles>
