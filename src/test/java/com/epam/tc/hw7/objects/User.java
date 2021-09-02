@@ -1,4 +1,4 @@
-package com.epam.tc.hw7.uiobjects;
+package com.epam.tc.hw7.objects;
 
 import com.epam.jdi.tools.DataClass;
 

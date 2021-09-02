@@ -3,7 +3,7 @@ package com.epam.tc.hw7;
 import static com.epam.tc.hw7.site.pages.HomePage.loginForm;
 import static com.epam.tc.hw7.site.pages.HomePage.userIcon;
 
-import com.epam.tc.hw7.uiobjects.User;
+import com.epam.tc.hw7.objects.User;
 import io.qameta.allure.Step;
 
 public class Steps {

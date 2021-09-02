@@ -13,7 +13,6 @@ public interface TestsInit {
     static void setUp() {
         killAllSeleniumDrivers();
         openSite(JdiSite.class);
-        //initSite(JDISite.class);
     }
 
     @AfterSuite(alwaysRun = true)
