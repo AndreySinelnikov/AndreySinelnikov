@@ -18,6 +18,6 @@ public interface TestsInit {
 
     @AfterSuite(alwaysRun = true)
     static void teardown() {
-        killAllSeleniumDrivers();
+        // killAllSeleniumDrivers();
     }
 }
