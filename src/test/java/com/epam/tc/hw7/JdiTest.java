@@ -9,6 +9,7 @@ import static com.epam.tc.hw7.site.pages.MetalsAndColorsPage.metalAndColorEntryF
 
 import com.epam.tc.hw7.objects.MetalAndColorEntry;
 import com.epam.tc.hw7.objects.User;
+import com.epam.tc.hw7.site.pages.MetalsAndColorsPage;
 import org.testng.annotations.Test;
 
 public class JdiTest implements TestsInit {
@@ -24,6 +25,6 @@ public class JdiTest implements TestsInit {
         metalAndColorEntryForm.fill(MetalAndColorEntry.getDefaultMetalAndColorEntry());
         // (no number) Submit form Metals & Colors
         metalAndColorEntryForm.submit();
-        // 4. Result sections should contain data from JSON
+        // 4. Result sections should contain data from
     }
 }
