@@ -1,12 +1,17 @@
 package com.epam.tc.hw7;
 
+import static com.epam.tc.hw7.site.pages.HomePage.loginForm;
+import static com.epam.tc.hw7.site.pages.HomePage.userIcon;
+
+import com.epam.tc.hw7.uiobjects.User;
 import io.qameta.allure.Step;
 
 public class Steps {
 
     @Step("Login on JDI site as User")
     public void loginOnJdiSiteAsUser() {
-        throw new UnsupportedOperationException();
+        userIcon.click();
+        loginForm.loginAs(new User());
     }
 
     @Step("Open Metals & Colors page by Header menu")
