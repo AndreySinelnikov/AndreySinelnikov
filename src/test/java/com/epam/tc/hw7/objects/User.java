@@ -1,8 +1,12 @@
 package com.epam.tc.hw7.objects;
 
 import com.epam.jdi.tools.DataClass;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class User extends DataClass<User> {
-    public String name = "Roman";
-    public String password = "Jdi1234";
+    public static final User ROMAN = new User("Roman", "Jdi1234");
+
+    public String name;
+    public String password;
 }

@@ -40,6 +40,7 @@ public class MetalAndColorEntryForm extends Form<MetalAndColorEntry> {
         entry.elements.forEach(elements::select);
         color.select(entry.color);
         entry.metals.forEach(metals::select);
+        vegetables.select("Vegetables");
         entry.vegetables.forEach(vegetables::select);
     }
 }
