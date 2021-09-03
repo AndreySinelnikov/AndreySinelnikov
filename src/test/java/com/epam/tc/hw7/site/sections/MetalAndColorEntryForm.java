@@ -34,13 +34,17 @@ public class MetalAndColorEntryForm extends Form<MetalAndColorEntry> {
 
     @Override
     public void fill(MetalAndColorEntry entry) {
-        odds.select(entry.summary.get(0).toString());
-        evens.select(entry.summary.get(1).toString());
+        //entry.printout();
+        String[] summaryHack = entry.summary.get(0).split(",");
+        //odds.select(entry.summary.get(0)); // doesn't work as intended
+        //evens.select(entry.summary.get(1));
+        odds.select(summaryHack[0]);
+        evens.select(summaryHack[1]);
         calculate.click();
         entry.elements.forEach(elements::select);
         color.select(entry.color);
-        entry.metals.forEach(metals::select);
-        vegetables.select("Vegetables");
+        metals.select(entry.metal);
+        vegetables.select("Vegetables");  // Deselect the pre-selected Vegetables option
         entry.vegetables.forEach(vegetables::select);
     }
 }
