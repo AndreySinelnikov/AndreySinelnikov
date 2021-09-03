@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Exercises 1, 2, 3">
+  <test name="exercises 1, 2, 3" >
+    <packages>
+      <package name="com.epam.tc.hw5.cucumber" />
+    </packages>
+  </test>
+</suite>
