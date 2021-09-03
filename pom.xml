@@ -212,23 +212,12 @@
         </profile>
 
         <profile>
-            <id>hw5test_all-tests</id>
-            <properties>
-                <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_5/all-tests-suite.xml</maven.surefire.plugin.suiteXmlFile>
-            </properties>
-        </profile>
-
-        <profile>
-            <id>hw6test_all-tests</id>
-            <properties>
-                <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_6/all-tests-suite.xml</maven.surefire.plugin.suiteXmlFile>
-            </properties>
-        </profile>
-
-        <profile>
             <id>hw7test_jdi</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
-                <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_4/all-tests-suite.xml</maven.surefire.plugin.suiteXmlFile>
+                <maven.surefire.plugin.suiteXmlFile>${project.basedir}/src/test/resources/testng/homework_7/jdi-test.xml</maven.surefire.plugin.suiteXmlFile>
             </properties>
         </profile>
     </profiles>
