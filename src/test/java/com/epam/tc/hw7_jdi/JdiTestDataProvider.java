@@ -1,5 +1,6 @@
 package com.epam.tc.hw7_jdi;
 
+import com.epam.tc.hw7_jdi.entities.MetalsAndColorsEntry;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;

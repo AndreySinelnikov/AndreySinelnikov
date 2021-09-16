@@ -1,17 +1,18 @@
 package com.epam.tc.hw7_jdi;
 
-import static com.epam.tc.hw7_jdi.HomePage.loginAs;
-import static com.epam.tc.hw7_jdi.JdiSite.headerMenu;
-import static com.epam.tc.hw7_jdi.JdiSite.homePage;
-import static com.epam.tc.hw7_jdi.JdiSite.metalsAndColorsPage;
-import static com.epam.tc.hw7_jdi.JdiSite.open;
+import static com.epam.tc.hw7_jdi.site.HomePage.loginAs;
+import static com.epam.tc.hw7_jdi.site.JdiSite.headerMenu;
+import static com.epam.tc.hw7_jdi.site.JdiSite.homePage;
+import static com.epam.tc.hw7_jdi.site.JdiSite.metalsAndColorsPage;
+import static com.epam.tc.hw7_jdi.site.JdiSite.open;
 import static com.epam.tc.hw7_jdi.JdiTestDataProvider.EXPECTED_USERNAME;
-import static com.epam.tc.hw7_jdi.MetalsAndColorsPage.getResult;
-import static com.epam.tc.hw7_jdi.MetalsAndColorsPage.logout;
-import static com.epam.tc.hw7_jdi.MetalsAndColorsPage.metalsAndColorsForm;
-import static com.epam.tc.hw7_jdi.User.ROMAN;
+import static com.epam.tc.hw7_jdi.site.MetalsAndColorsPage.getResult;
+import static com.epam.tc.hw7_jdi.site.MetalsAndColorsPage.logout;
+import static com.epam.tc.hw7_jdi.site.MetalsAndColorsPage.metalsAndColorsForm;
+import static com.epam.tc.hw7_jdi.entities.User.ROMAN;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.epam.tc.hw7_jdi.entities.MetalsAndColorsEntry;
 import org.testng.annotations.Test;
 
 public class JdiTest implements TestsInit {

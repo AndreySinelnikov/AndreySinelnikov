@@ -3,7 +3,7 @@
 <suite name="JDI exercise">
   <test name="jdi-exercise" >
     <packages>
-      <package name="com.epam.tc.hw7" />
+      <package name="com.epam.tc.hw7_jdi" />
     </packages>
   </test>
 </suite>

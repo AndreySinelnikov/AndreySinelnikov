@@ -1,4 +1,4 @@
-package com.epam.tc.hw7_jdi;
+package com.epam.tc.hw7_jdi.entities;
 
 import static java.lang.String.format;
 import static java.lang.String.join;
