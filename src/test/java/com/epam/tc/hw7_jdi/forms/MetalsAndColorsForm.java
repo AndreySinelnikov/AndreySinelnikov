@@ -1,4 +1,4 @@
-package com.epam.tc.hw7_jdi;
+package com.epam.tc.hw7_jdi.forms;
 
 import com.epam.jdi.light.elements.complex.Checklist;
 import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
@@ -7,6 +7,7 @@ import com.epam.jdi.light.elements.pageobjects.annotations.locators.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Button;
 import com.epam.jdi.light.ui.html.elements.complex.RadioButtons;
+import com.epam.tc.hw7_jdi.entities.MetalsAndColorsEntry;
 
 public class MetalsAndColorsForm extends Form<MetalsAndColorsEntry> {
     @JDropdown(root = "div#colors",

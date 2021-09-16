@@ -1,4 +1,4 @@
-package com.epam.tc.hw7_jdi;
+package com.epam.tc.hw7_jdi.site;
 
 import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.jdi.light.elements.composite.WebPage;
@@ -8,6 +8,7 @@ import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Button;
 import com.epam.jdi.light.ui.html.elements.common.Icon;
+import com.epam.tc.hw7_jdi.forms.MetalsAndColorsForm;
 import java.util.List;
 import java.util.stream.Collectors;
 
