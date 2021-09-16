@@ -9,4 +9,8 @@ public class JdiSite {
     public static void open() {
         homePage.open();
     }
+
+    public static void loginAs(User user) {
+        homePage.loginAs(user);
+    }
 }
