@@ -5,7 +5,7 @@ import static com.epam.jdi.light.elements.init.PageFactory.initSite;
 import org.testng.annotations.BeforeSuite;
 
 public interface TestsInit {
-    @BeforeSuite(alwaysRun = true)
+    @BeforeSuite
     static void setUp() {
         initSite(JdiSite.class);
     }
