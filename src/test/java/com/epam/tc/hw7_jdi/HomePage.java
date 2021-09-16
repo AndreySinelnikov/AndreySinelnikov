@@ -22,8 +22,13 @@ public class HomePage extends WebPage {
     @UI(".btn-login")
     public static Button logoutButton;
 
-    public void loginAs(User user) {
+    public static void loginAs(User user) {
         userIcon.click();
-        loginForm.login(user);
+        loginForm.loginAs(user);
     }
+
+    public static void logout() {
+        logoutButton.click();
+    }
+
 }

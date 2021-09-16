@@ -12,10 +12,4 @@ public class LoginForm extends Form<User> {
     TextField password;
     @Css("#login-button")
     Button submit;
-
-    public void login(User user) {
-        name.sendKeys(user.name);
-        password.sendKeys(user.password);
-        submit.click();
-    }
 }
